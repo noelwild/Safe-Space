@@ -1,0 +1,1 @@
+This is a test text file to verify that non-PDF files are rejected by the endpoint.

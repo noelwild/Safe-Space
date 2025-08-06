@@ -1,0 +1,11 @@
+{
+  "report_id": 1,
+  "conversation_id": 10,
+  "message_id": null,
+  "reported_by": "Sarah Johnson",
+  "report_type": "policy_violation",
+  "reason": "Test report for enhanced messaging functionality",
+  "description": "This is a test report to verify the reporting system works correctly.",
+  "report_date": "2025-07-31 23:22:01",
+  "status": "Open"
+}

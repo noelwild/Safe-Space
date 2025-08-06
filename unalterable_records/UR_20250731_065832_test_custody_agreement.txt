@@ -1,0 +1,13 @@
+
+        CUSTODY AGREEMENT - TEST DOCUMENT
+        
+        This is a test legal document for the Safespace Unalterable Records system.
+        
+        Date: 2025-07-31
+        Parties: John Doe and Jane Smith
+        
+        This document contains important legal information that must be preserved
+        permanently and cannot be altered or deleted.
+        
+        Hash verification ensures document integrity for court proceedings.
+        

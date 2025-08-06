@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace - Investor Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 15px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .title-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .title-slide h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-slide h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .title-slide .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #34495e;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .problem-point {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff5f5;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .problem-icon {
+            font-size: 2rem;
+            margin-right: 20px;
+            color: #e74c3c;
+        }
+
+        .solution-point {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f0fff4;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .solution-icon {
+            font-size: 2rem;
+            margin-right: 20px;
+            color: #27ae60;
+        }
+
+        .revenue-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .revenue-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        .revenue-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .revenue-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .competitive-advantage {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #27ae60;
+        }
+
+        .funding-use {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .funding-percentage {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-right: 20px;
+            min-width: 80px;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .timeline-quarter {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+            margin-right: 30px;
+        }
+
+        .logo-placeholder {
+            width: 150px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 30px;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+                margin: 20px 0;
+            }
+            
+            .title-slide h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-column,
+            .three-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide title-slide">
+            <div class="logo-placeholder">SafeSpace</div>
+            <h1>SafeSpace</h1>
+            <h2>AI-Powered Co-Parenting Communication Platform</h2>
+            <p class="tagline">Transforming separated family communication through intelligent technology</p>
+            <p style="margin-top: 30px; font-size: 1.1rem;">Seed Funding Presentation • 2025</p>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide">
+            <div class="slide-number">2</div>
+            <h1>The Problem</h1>
+            <div class="problem-point">
+                <div class="problem-icon">⚔️</div>
+                <div>
+                    <h3>High-Conflict Co-Parenting</h3>
+                    <p>85% of divorced parents experience ongoing communication conflicts that negatively impact children's wellbeing and development.</p>
+                </div>
+            </div>
+            <div class="problem-point">
+                <div class="problem-icon">💸</div>
+                <div>
+                    <h3>Financial Disputes</h3>
+                    <p>73% of co-parenting conflicts involve financial disagreements, leading to costly legal interventions and family stress.</p>
+                </div>
+            </div>
+            <div class="problem-point">
+                <div class="problem-icon">⚖️</div>
+                <div>
+                    <h3>Legal Documentation Challenges</h3>
+                    <p>Courts struggle with incomplete communication records, making custody and support decisions more difficult and expensive.</p>
+                </div>
+            </div>
+            <div class="problem-point">
+                <div class="problem-icon">🌍</div>
+                <div>
+                    <h3>Language Barriers</h3>
+                    <p>Multicultural families face additional communication challenges when parents speak different languages.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Market Opportunity -->
+        <div class="slide">
+            <div class="slide-number">3</div>
+            <h1>Massive Market Opportunity</h1>
+            <div class="three-column">
+                <div class="stat-box">
+                    <span class="stat-number">2.4M</span>
+                    <span class="stat-label">Annual Divorces<br>in US & Australia</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">$12.2B</span>
+                    <span class="stat-label">Family Law Market<br>Size (Annual)</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">68%</span>
+                    <span class="stat-label">Divorce Cases<br>with Children</span>
+                </div>
+            </div>
+            <div class="two-column" style="margin-top: 40px;">
+                <div>
+                    <h3>Target Addressable Market</h3>
+                    <ul style="font-size: 1.1rem; line-height: 1.8;">
+                        <li><strong>Primary:</strong> 1.6M divorced parents annually</li>
+                        <li><strong>Secondary:</strong> 4.2M existing separated families</li>
+                        <li><strong>Tertiary:</strong> Family law professionals & mediators</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Market Growth Drivers</h3>
+                    <ul style="font-size: 1.1rem; line-height: 1.8;">
+                        <li>Rising divorce rates in developed countries</li>
+                        <li>Increased focus on children's mental health</li>
+                        <li>Digital-first legal service adoption</li>
+                        <li>Growing multicultural family demographics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Our Solution -->
+        <div class="slide">
+            <div class="slide-number">4</div>
+            <h1>Our Solution: SafeSpace</h1>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px;">The world's first AI-powered co-parenting communication platform designed to reduce conflict and protect children</p>
+            
+            <div class="feature-grid">
+                <div class="solution-point">
+                    <div class="solution-icon">🤖</div>
+                    <div>
+                        <h3>AI Message Enhancement</h3>
+                        <p>Claude AI evaluates and rewrites messages to prevent family violence and promote respectful communication</p>
+                    </div>
+                </div>
+                <div class="solution-point">
+                    <div class="solution-icon">🌍</div>
+                    <div>
+                        <h3>Multi-Language Support</h3>
+                        <p>10 language support with real-time translation breaks down communication barriers</p>
+                    </div>
+                </div>
+                <div class="solution-point">
+                    <div class="solution-icon">💳</div>
+                    <div>
+                        <h3>Smart Financial Tracking</h3>
+                        <p>OCR receipt processing and transparent expense sharing eliminate financial disputes</p>
+                    </div>
+                </div>
+                <div class="solution-point">
+                    <div class="solution-icon">⚖️</div>
+                    <div>
+                        <h3>Legal-Grade Documentation</h3>
+                        <p>Cryptographically verified records provide court-ready communication evidence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Product Features -->
+        <div class="slide">
+            <div class="slide-number">5</div>
+            <h1>Comprehensive Feature Set</h1>
+            <div class="two-column">
+                <div>
+                    <div class="feature-card">
+                        <h3>🔒 Core Safety Features</h3>
+                        <ul>
+                            <li>AI-powered message filtering</li>
+                            <li>Family violence detection</li>
+                            <li>Automatic message rewriting</li>
+                            <li>Real-time communication monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📅 Organization Tools</h3>
+                        <ul>
+                            <li>Shared calendar management</li>
+                            <li>Event coordination</li>
+                            <li>Appointment scheduling</li>
+                            <li>Important date tracking</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📱 Mobile-First Design</h3>
+                        <ul>
+                            <li>Responsive web application</li>
+                            <li>Cross-platform compatibility</li>
+                            <li>Offline message queuing</li>
+                            <li>Push notifications</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="feature-card">
+                        <h3>💰 Financial Management</h3>
+                        <ul>
+                            <li>Expense tracking & sharing</li>
+                            <li>OCR receipt processing</li>
+                            <li>Payment request system</li>
+                            <li>Financial transparency reports</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📋 Document Management</h3>
+                        <ul>
+                            <li>Secure file storage</li>
+                            <li>Cryptographic verification</li>
+                            <li>Version control</li>
+                            <li>Court-ready exports</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>👥 Multi-Relationship Support</h3>
+                        <ul>
+                            <li>Multiple co-parent relationships</li>
+                            <li>Context switching</li>
+                            <li>Individual privacy controls</li>
+                            <li>Relationship-based data isolation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Technical Innovation -->
+        <div class="slide">
+            <div class="slide-number">6</div>
+            <h1>Technical Differentiation</h1>
+            <div class="two-column">
+                <div>
+                    <h2>AI-Powered Safety Engine</h2>
+                    <div class="competitive-advantage">
+                        <h3>Anthropic Claude Integration</h3>
+                        <p>Advanced natural language processing specifically trained for family violence detection and message enhancement</p>
+                    </div>
+                    <div class="competitive-advantage">
+                        <h3>Real-Time Analysis</h3>
+                        <p>Instant message evaluation and rewriting with contextual awareness of family dynamics</p>
+                    </div>
+                    <div class="competitive-advantage">
+                        <h3>Multi-Language AI</h3>
+                        <p>Seamless translation and cultural context adaptation across 10 languages</p>
+                    </div>
+                </div>
+                <div>
+                    <h2>Security & Legal Compliance</h2>
+                    <div class="competitive-advantage">
+                        <h3>Cryptographic Verification</h3>
+                        <p>SHA-256 hashing ensures document integrity for legal proceedings</p>
+                    </div>
+                    <div class="competitive-advantage">
+                        <h3>Audit Trail</h3>
+                        <p>Complete communication history with tamper-proof timestamps</p>
+                    </div>
+                    <div class="competitive-advantage">
+                        <h3>GDPR & Privacy Compliant</h3>
+                        <p>Designed with privacy-by-design principles and data sovereignty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Business Model -->
+        <div class="slide">
+            <div class="slide-number">7</div>
+            <h1>Sustainable Revenue Model</h1>
+            <div class="two-column">
+                <div>
+                    <h2>Subscription Tiers</h2>
+                    <table class="revenue-table">
+                        <thead>
+                            <tr>
+                                <th>Plan</th>
+                                <th>Price (Monthly)</th>
+                                <th>Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Basic</strong></td>
+                                <td>$19.99</td>
+                                <td>Core messaging, Calendar, Basic financial tracking</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Premium</strong></td>
+                                <td>$29.99</td>
+                                <td>All Basic + Multi-language, Advanced AI, Legal documents</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Family+</strong></td>
+                                <td>$49.99</td>
+                                <td>All Premium + Multiple relationships, Priority support</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h2>Revenue Projections</h2>
+                    <div class="stat-box">
+                        <span class="stat-number">$240</span>
+                        <span class="stat-label">Average Annual Revenue<br>Per User (Basic)</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">85%</span>
+                        <span class="stat-label">Projected Customer<br>Retention Rate</span>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <h3>Additional Revenue Streams</h3>
+                        <ul style="font-size: 1.1rem; line-height: 1.8;">
+                            <li>Professional services integration</li>
+                            <li>Legal export & certification fees</li>
+                            <li>Enterprise family law firm licenses</li>
+                            <li>Premium AI analysis reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Go-to-Market Strategy -->
+        <div class="slide">
+            <div class="slide-number">8</div>
+            <h1>Go-to-Market Strategy</h1>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-quarter">Q1 2025</div>
+                    <div>
+                        <h3>Beta Launch & Legal Partnerships</h3>
+                        <p>Partner with 10 family law firms for user acquisition and product validation</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-quarter">Q2 2025</div>
+                    <div>
+                        <h3>Digital Marketing & Influencer Campaign</h3>
+                        <p>Target divorced parent communities through social media, parenting blogs, and support groups</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-quarter">Q3 2025</div>
+                    <div>
+                        <h3>Court System Integration</h3>
+                        <p>Pilot programs with family courts for official communication platform adoption</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-quarter">Q4 2025</div>
+                    <div>
+                        <h3>International Expansion</h3>
+                        <p>Launch in UK, Canada, and Australia with localized legal compliance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Competitive Landscape -->
+        <div class="slide">
+            <div class="slide-number">9</div>
+            <h1>Competitive Advantages</h1>
+            <div class="two-column">
+                <div>
+                    <h2>Current Competitors</h2>
+                    <div style="margin: 20px 0;">
+                        <h4>OurFamilyWizard</h4>
+                        <p>✗ No AI enhancement<br>✗ Limited language support<br>✗ Basic financial tools</p>
+                    </div>
+                    <div style="margin: 20px 0;">
+                        <h4>2Houses</h4>
+                        <p>✗ No safety filtering<br>✗ No legal compliance<br>✗ Limited scalability</p>
+                    </div>
+                    <div style="margin: 20px 0;">
+                        <h4>Coparently</h4>
+                        <p>✗ No document verification<br>✗ No multi-language<br>✗ Basic messaging only</p>
+                    </div>
+                </div>
+                <div>
+                    <h2>SafeSpace Advantages</h2>
+                    <div class="competitive-advantage">
+                        <h3>🤖 AI-First Approach</h3>
+                        <p>Only platform with advanced AI safety filtering and message enhancement</p>
+                    </div>
+                    <div class="competitive-advantage">
+                        <h3>⚖️ Legal-Grade Security</h3>
+                        <p>Cryptographically verified documents accepted in court proceedings</p>
+                    </div>
+                    <div class="competitive-advantage">
+                        <h3>🌍 Global Scalability</h3>
+                        <p>Multi-language support enables expansion into diverse markets</p>
+                    </div>
+                    <div class="competitive-advantage">
+                        <h3>👨‍👩‍👧‍👦 Child-Centric Design</h3>
+                        <p>Every feature designed with children's wellbeing as the primary focus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Financial Projections -->
+        <div class="slide">
+            <div class="slide-number">10</div>
+            <h1>5-Year Financial Projections</h1>
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Users</th>
+                        <th>Revenue</th>
+                        <th>Gross Margin</th>
+                        <th>Operating Expenses</th>
+                        <th>Net Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025</td>
+                        <td>2,500</td>
+                        <td>$600K</td>
+                        <td>85%</td>
+                        <td>$800K</td>
+                        <td>-$290K</td>
+                    </tr>
+                    <tr>
+                        <td>2026</td>
+                        <td>12,000</td>
+                        <td>$3.2M</td>
+                        <td>87%</td>
+                        <td>$2.1M</td>
+                        <td>$690K</td>
+                    </tr>
+                    <tr>
+                        <td>2027</td>
+                        <td>35,000</td>
+                        <td>$9.8M</td>
+                        <td>88%</td>
+                        <td>$4.2M</td>
+                        <td>$4.4M</td>
+                    </tr>
+                    <tr>
+                        <td>2028</td>
+                        <td>75,000</td>
+                        <td>$22.5M</td>
+                        <td>89%</td>
+                        <td>$8.1M</td>
+                        <td>$12.4M</td>
+                    </tr>
+                    <tr>
+                        <td>2029</td>
+                        <td>140,000</td>
+                        <td>$42.0M</td>
+                        <td>90%</td>
+                        <td>$14.8M</td>
+                        <td>$23.0M</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="three-column" style="margin-top: 40px;">
+                <div class="stat-box">
+                    <span class="stat-number">140K</span>
+                    <span class="stat-label">Projected Users<br>by Year 5</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">$42M</span>
+                    <span class="stat-label">Annual Revenue<br>by Year 5</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">55%</span>
+                    <span class="stat-label">Net Margin<br>by Year 5</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Funding Requirements -->
+        <div class="slide">
+            <div class="slide-number">11</div>
+            <h1>Funding Requirements</h1>
+            <div class="two-column">
+                <div>
+                    <div class="stat-box">
+                        <span class="stat-number">$2.5M</span>
+                        <span class="stat-label">Seed Funding<br>Requirement</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">18 months</span>
+                        <span class="stat-label">Runway to<br>Profitability</span>
+                    </div>
+                </div>
+                <div>
+                    <h2>Use of Funds</h2>
+                    <div class="funding-use">
+                        <div class="funding-percentage">40%</div>
+                        <div>
+                            <h3>Product Development</h3>
+                            <p>AI enhancement, mobile apps, advanced features</p>
+                        </div>
+                    </div>
+                    <div class="funding-use">
+                        <div class="funding-percentage">30%</div>
+                        <div>
+                            <h3>Marketing & Customer Acquisition</h3>
+                            <p>Digital marketing, legal partnerships, content creation</p>
+                        </div>
+                    </div>
+                    <div class="funding-use">
+                        <div class="funding-percentage">20%</div>
+                        <div>
+                            <h3>Team Expansion</h3>
+                            <p>Engineering, customer success, legal compliance</p>
+                        </div>
+                    </div>
+                    <div class="funding-use">
+                        <div class="funding-percentage">10%</div>
+                        <div>
+                            <h3>Legal & Compliance</h3>
+                            <p>International expansion, regulatory compliance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Team & Vision -->
+        <div class="slide">
+            <div class="slide-number">12</div>
+            <h1>Vision & Impact</h1>
+            <div class="two-column">
+                <div>
+                    <h2>Our Mission</h2>
+                    <p style="font-size: 1.3rem; line-height: 1.8; margin-bottom: 30px;">
+                        <strong>To transform separated family communication through intelligent technology, 
+                        ensuring every child grows up in a conflict-free environment regardless of their parents' relationship status.</strong>
+                    </p>
+                    
+                    <h3>Long-term Vision</h3>
+                    <ul style="font-size: 1.1rem; line-height: 1.8;">
+                        <li>Reduce childhood trauma from parental conflict by 50%</li>
+                        <li>Save families $1B annually in legal costs</li>
+                        <li>Become the standard platform for family courts globally</li>
+                        <li>Support 1M+ children through better co-parenting</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Social Impact</h2>
+                    <div class="feature-card">
+                        <h3>👶 Child Wellbeing</h3>
+                        <p>Reducing exposure to parental conflict improves children's mental health, academic performance, and social development</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💰 Economic Benefits</h3>
+                        <p>Decreased legal costs, improved co-parent productivity, and reduced family court system burden</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌍 Global Reach</h3>
+                        <p>Multi-language support enables impact across diverse cultural communities worldwide</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Call to Action -->
+        <div class="slide">
+            <div class="slide-number">13</div>
+            <div class="cta-section">
+                <h1 style="color: white; margin-bottom: 30px;">Join Us in Transforming Family Communication</h1>
+                <h2 style="color: white; margin-bottom: 40px; font-weight: 300;">Help us create a world where every child benefits from respectful co-parenting</h2>
+                
+                <div style="margin: 40px 0;">
+                    <div class="stat-box" style="display: inline-block; margin: 0 20px;">
+                        <span class="stat-number">$2.5M</span>
+                        <span class="stat-label">Seed Funding Goal</span>
+                    </div>
+                    <div class="stat-box" style="display: inline-block; margin: 0 20px;">
+                        <span class="stat-number">2.4M</span>
+                        <span class="stat-label">Target Market Size</span>
+                    </div>
+                    <div class="stat-box" style="display: inline-block; margin: 0 20px;">
+                        <span class="stat-number">$42M</span>
+                        <span class="stat-label">Year 5 Revenue Target</span>
+                    </div>
+                </div>
+
+                <h3 style="color: white; margin: 30px 0;">Ready to make a difference?</h3>
+                <button class="cta-button">Schedule a Demo</button>
+                <button class="cta-button">Request Detailed Business Plan</button>
+                
+                <div style="margin-top: 40px; font-size: 1.1rem;">
+                    <p>Contact: info@safespacetechnologies.com.au</p>
+                    <p>SafeSpace Technologies • Making co-parenting communication safer and more respectful</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Add smooth scrolling animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Print styles for PDF generation */
+        @media print {
+            .slide {
+                page-break-after: always;
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</body>
+</html>

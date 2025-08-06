@@ -1,0 +1,11 @@
+{
+  "report_id": 2,
+  "conversation_id": 10,
+  "message_id": null,
+  "reported_by": "Sarah Johnson",
+  "report_type": "policy_violation",
+  "reason": "Test report",
+  "description": null,
+  "report_date": "2025-07-31 23:23:59",
+  "status": "Open"
+}
